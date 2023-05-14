@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP Graphic editor", "OOP Graphic editor.csproj", "{103BED93-3D3A-4089-AAC3-5516C4755ED0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{103BED93-3D3A-4089-AAC3-5516C4755ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103BED93-3D3A-4089-AAC3-5516C4755ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103BED93-3D3A-4089-AAC3-5516C4755ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103BED93-3D3A-4089-AAC3-5516C4755ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {359A685E-890D-4686-A2D0-48266DB1923B}
+	EndGlobalSection
+EndGlobal

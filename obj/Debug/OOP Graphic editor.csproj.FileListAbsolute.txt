@@ -1,0 +1,11 @@
+C:\Projects\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe.config
+C:\Projects\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe
+C:\Projects\OOP Graphic editor\bin\Debug\OOP Graphic editor.pdb
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.AssemblyReference.cache
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.SuggestedBindingRedirects.cache
+C:\Projects\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Form1.resources
+C:\Projects\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Properties.Resources.resources
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.GenerateResource.cache
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CoreCompileInputs.cache
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.exe
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.pdb
