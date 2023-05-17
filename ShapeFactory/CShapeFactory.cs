@@ -11,10 +11,18 @@ namespace OOP_Graphic_editor
 {
     public class CShapeFactory
     {
-        private List<AbstractShape> shapes = new List<AbstractShape>();
+        protected List<AbstractShape> shapes = new List<AbstractShape>();
         public int Count
         {
             get { return shapes.Count; }
+        }
+        public int FindIndex(Predicate<AbstractShape> match)
+        {
+            return shapes.FindIndex(match);
+        }
+        public void Insert(in int index, in AbstractShape shape)
+        {
+            shapes.Insert(index, shape);
         }
         public AbstractShape this[in int index]
         {
@@ -35,7 +43,7 @@ namespace OOP_Graphic_editor
         {
             shapes.RemoveAt(index);
         }
-        public void Remove(in AbstractShape shape)
+        public virtual void Remove(in AbstractShape shape)
         {
             shapes.Remove(shape);
         }

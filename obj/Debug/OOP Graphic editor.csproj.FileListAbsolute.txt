@@ -9,3 +9,14 @@ C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.GenerateResou
 C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CoreCompileInputs.cache
 C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.exe
 C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.pdb
+C:\Projects\OOP Graphic editor\bin\Debug\Antlr3.Runtime.dll
+C:\Projects\OOP Graphic editor\bin\Debug\Iesi.Collections.dll
+C:\Projects\OOP Graphic editor\bin\Debug\NHibernate.dll
+C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.dll
+C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.dll
+C:\Projects\OOP Graphic editor\bin\Debug\Antlr3.Runtime.xml
+C:\Projects\OOP Graphic editor\bin\Debug\Iesi.Collections.xml
+C:\Projects\OOP Graphic editor\bin\Debug\NHibernate.xml
+C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.xml
+C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.xml
+C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CopyComplete

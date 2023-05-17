@@ -91,17 +91,6 @@ namespace OOP_Graphic_editor.Shapes
             get { return color; }
             set { color = value; }
         }
-
-        //public override void Load(in StreamReader reader,in int beginIndex = 0, CShapeFactory factory = null)
-        //{
-        //    string buf = reader.ReadLine();
-        //    string[] words = buf.Split(' ');
-        //    height = float.Parse(words[beginIndex+3]);
-        //    width = float.Parse(words[beginIndex+6]);
-        //    x = int.Parse(words[beginIndex+9]);
-        //    y = int.Parse(words[beginIndex + 12]);
-        //    color = Color.FromArgb(Convert.ToInt32(words[beginIndex+13]));
-        //}
         public override void Load(ref string fileInfo, CShapeFactory factory = null)
         {
             string[] words = fileInfo.Split(' ');

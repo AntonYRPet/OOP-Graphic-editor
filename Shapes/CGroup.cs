@@ -125,32 +125,6 @@ namespace OOP_Graphic_editor.Shapes
         }
         public override void Load(ref string newFileInfo, CShapeFactory factory = null)
         {
-            /*
-            //List<AbstractShape> shapes = new List<AbstractShape>();
-            //newFileInfo = newFileInfo.Remove(0, newFileInfo.IndexOf("(") + 2);
-            //while(newFileInfo.Length > 2)
-            //{
-            //    if (newFileInfo[0] == ' ')
-            //        newFileInfo = newFileInfo.Remove(0,1);
-            //    AbstractShape shape = factory.createShape(newFileInfo[0]);
-            //    if (shape != null)
-            //    {
-            //        if (shape is CGroup)
-            //        {
-            //            if (shapes.Count > 0 && shapes.Last() is CGroup!=true)
-            //                break;
-            //            shape.Load(ref newFileInfo, factory);
-            //        }
-            //        else
-            //            shape.Load(ref newFileInfo);
-            //        shapes.Add(shape);
-            //    }
-
-            //    if (newFileInfo[0] != 'G')
-            //        newFileInfo = newFileInfo.Remove(0, newFileInfo.IndexOf(";") + 2);
-            //}
-            //CreateGroup(shapes);
-            */
             List<AbstractShape> shapes = new List<AbstractShape>();
             depth = GetDepth(newFileInfo);
             newFileInfo = newFileInfo.Remove(0, newFileInfo.IndexOf("(") + 1);

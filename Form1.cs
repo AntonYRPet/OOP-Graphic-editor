@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,16 +25,20 @@ namespace OOP_Graphic_editor
         Color currentColor = Color.Blue;
         int currentFormWidth;
         int currentFormHeight;
+        int currentFormX;
+        int currentFormY;
+        bool moveFlag = false;
         public Form1()
         {
             InitializeComponent();
-            
+
             setColorButton.BackColor = currentColor;
             currentFormHeight = this.Height;
             currentFormWidth = this.Width;
         }
         private void canvas_MouseDown(object sender, MouseEventArgs e)
         {
+            moveFlag = true;
             switch (actionOnCanvas)
             {
                 case Action.select:
@@ -48,7 +53,22 @@ namespace OOP_Graphic_editor
                 case Action.triangle:
                     canvasMainController.CreateShape(new CTriangle(e.X, e.Y, currentColor));
                     break;
+                default:
+                    break;
             }
+        }
+        private void canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (moveFlag && canvasMainController.SelectShape(e.X, e.Y))
+            {
+                //canvasMainController.MoveSelectedShape(e.X - currentFormX, e.Y - currentFormY);
+            }
+            currentFormX = e.X;
+            currentFormY = e.Y;
+        }
+        private void canvas_MouseUp(object sender, MouseEventArgs e)
+        {
+            moveFlag = false;
         }
         private void canvas_Paint(object sender, PaintEventArgs e)
         {
@@ -56,27 +76,25 @@ namespace OOP_Graphic_editor
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            int moveOffset = 6;
-            float sizeOffset = 4;
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    canvasMainController.MoveSelectedShape(-moveOffset, 0);
+                    canvasMainController.MoveSelectedShape("left");
                     break;
                 case Keys.Right:
-                    canvasMainController.MoveSelectedShape(moveOffset, 0);
+                    canvasMainController.MoveSelectedShape("right");
                     break;
                 case Keys.Up:
-                    canvasMainController.MoveSelectedShape(0, -moveOffset);
+                    canvasMainController.MoveSelectedShape("up");
                     break;
                 case Keys.Down:
-                    canvasMainController.MoveSelectedShape(0, moveOffset);
+                    canvasMainController.MoveSelectedShape("down");
                     break;
                 case Keys.Oemplus:
-                    canvasMainController.SetSizeSelectedShape(sizeOffset, sizeOffset);
+                    canvasMainController.SetSizeSelectedShape("plus");
                     break;
                 case Keys.OemMinus:
-                    canvasMainController.SetSizeSelectedShape(-sizeOffset, -sizeOffset);
+                    canvasMainController.SetSizeSelectedShape("minus");
                     break;
                 case Keys.ControlKey:
                     canvasMainController.resetOnSelection = true;
@@ -89,6 +107,9 @@ namespace OOP_Graphic_editor
                     break;
                 case Keys.S:
                     canvasMainController.SaveShape();
+                    break;
+                case Keys.Z:
+                    canvasMainController.CancellationAction();
                     break;
             }
         }
@@ -138,10 +159,29 @@ namespace OOP_Graphic_editor
                 currentFormWidth = Width; currentFormHeight = Height;
             }
         }
+        string SystemFileName = "SystemSize.txt";
         private void Form1_Load(object sender, EventArgs e)
         {
             canvasMainController = new CanvasMainController(canvas);
             canvasMainController.LoadShape();
+            if (File.Exists(SystemFileName))
+            {
+
+                using (StreamReader reader = new StreamReader(SystemFileName))
+                {
+                    string readBuf = reader.ReadLine();
+                    string[] buf = readBuf.Split(' ');
+                    this.Size = new Size(int.Parse(buf[0]), int.Parse(buf[1]));
+                }
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+            canvasMainController.SaveShape();
+            File.Create(SystemFileName).Close();
+            File.AppendAllText(SystemFileName, this.Width + " " + this.Height);
         }
     }
 }

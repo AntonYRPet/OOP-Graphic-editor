@@ -1,4 +1,5 @@
-﻿using OOP_Graphic_editor.Shapes;
+﻿using OOP_Graphic_editor.Decorators;
+using OOP_Graphic_editor.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,23 @@ namespace OOP_Graphic_editor.ShapeFactory
                     break;
             }
             return shape;
+        }
+        public override void Remove(in AbstractShape shape)
+        {
+            if (shapes.Remove(shape) == false && shape is ShapeFrameDecorator)
+            {
+                ShapeFrameDecorator decorator;
+                ShapeFrameDecorator shapeDecorator = shape as ShapeFrameDecorator;
+                for (int i = 0; i < shapes.Count; i++)
+                {
+                    decorator = shapes[i] as ShapeFrameDecorator;
+                    if(decorator != null)
+                    {
+                        if(decorator.realObject == shapeDecorator.realObject)
+                            shapes.RemoveAt(i);
+                    }
+                }
+            }
         }
     }
 }
