@@ -29,7 +29,7 @@ namespace OOP_Graphic_editor
         public CanvasMainController(in PictureBox pictureBox)
         {
             canvas = pictureBox;
-            moveOffset = 6; sizeOffset = 4;
+            moveOffset = 1; sizeOffset = 4;
             commands.Add("up", new MoveCommand(0, -moveOffset));
             commands.Add("down", new MoveCommand(0, moveOffset));
             commands.Add("left", new MoveCommand(-moveOffset, 0));

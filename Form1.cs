@@ -61,7 +61,14 @@ namespace OOP_Graphic_editor
         {
             if (moveFlag && canvasMainController.SelectShape(e.X, e.Y))
             {
-                //canvasMainController.MoveSelectedShape(e.X - currentFormX, e.Y - currentFormY);
+                if(e.X>currentFormX)
+                    canvasMainController.MoveSelectedShape("right");
+                if(e.X<currentFormX)
+                    canvasMainController.MoveSelectedShape("left");
+                if(e.Y>currentFormY)
+                    canvasMainController.MoveSelectedShape("down");
+                if(e.Y<currentFormY)
+                    canvasMainController.MoveSelectedShape("up");
             }
             currentFormX = e.X;
             currentFormY = e.Y;
