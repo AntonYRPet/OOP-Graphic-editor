@@ -49,7 +49,7 @@
             this.canvas.BackColor = System.Drawing.SystemColors.Control;
             this.canvas.Location = new System.Drawing.Point(12, 32);
             this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(776, 406);
+            this.canvas.Size = new System.Drawing.Size(747, 406);
             this.canvas.TabIndex = 0;
             this.canvas.TabStop = false;
             this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas_Paint);
@@ -137,6 +137,7 @@
             this.Controls.Add(this.canvas);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

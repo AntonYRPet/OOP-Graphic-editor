@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace OOP_Graphic_editor.Decorators
     internal class ShapeFrameDecorator : AbstractShape
     {
         public readonly AbstractShape realObject;
-        private const int FRAME_OFFSET = 3;
+        private const int FRAME_OFFSET = 10;
         private Pen pen = new Pen(Color.Blue, 1);
         public ShapeFrameDecorator(in AbstractShape realObject)
         {
@@ -39,7 +40,16 @@ namespace OOP_Graphic_editor.Decorators
         {
             get { return realObject.Y; }
         }
-        public override bool BelongPoint(int xChecked, int yChecked)
+
+        public override float MIN_WIDTH
+        {
+            get { return realObject.MIN_WIDTH; }
+        }
+        public override float MIN_HEIGHT
+        {
+            get { return realObject.MIN_HEIGHT; }
+        }
+        public override bool BelongPoint(in int xChecked, in int yChecked)
         {
             return realObject.BelongPoint(xChecked, yChecked);
         }
@@ -48,17 +58,32 @@ namespace OOP_Graphic_editor.Decorators
             realObject.Draw(graphics);
             graphics.DrawRectangle(pen, realObject.X - (realObject.WIDTH + FRAME_OFFSET) / 2, realObject.Y - (realObject.HEIGHT + FRAME_OFFSET) / 2, realObject.WIDTH + FRAME_OFFSET, realObject.HEIGHT + FRAME_OFFSET);
         }
-        public override bool Move(in int canvasWidth, in int canvasHeight, in int newX, in int newY)
+        public override void Move(in int dX, in int dY)
         {
-            return realObject.Move(canvasWidth, canvasHeight, newX, newY);
+            realObject.Move(dX, dY);
         }
-        public override bool SetSize(in int canvasWidth, in int canvasHeight, in float newWidth, in float newHeight)
+        public override void SetSize(in float newWidth, in float newHeight)
         {
-            return realObject.SetSize(canvasWidth, canvasHeight, newWidth, newHeight);
+            realObject.SetSize(newWidth, newHeight);
         }
-        public override bool CheckSize(in int canvasWidth, in int canvasHeight, int? newX, int? newY, in float upOffset = 0, in float downOffset = 0, in float leftOffset = 0, in float rightOffset = 0)
+        public override bool CheckSize(in int canvasWidth, in int canvasHeight, in uint upOffset, in uint downOffset, in uint leftOffset, in uint rightOffset)
         {
-            return realObject.CheckSize(canvasWidth, canvasHeight, newX, newY, upOffset, downOffset, leftOffset, rightOffset);
+            return realObject.CheckSize(canvasWidth, canvasHeight, upOffset, downOffset, leftOffset, rightOffset);
+        }
+
+        public override void Save(in string fileName, bool flag = false)
+        {
+            realObject.Save(fileName, flag);
+        }
+
+        //public override void Load(in StreamReader reader,in int beginIndex = 0, CShapeFactory factory = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public override void Load(ref string fileInfo, CShapeFactory factory = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

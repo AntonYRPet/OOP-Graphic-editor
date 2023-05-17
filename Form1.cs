@@ -18,8 +18,8 @@ namespace OOP_Graphic_editor
         {
             select, circle, rectangle, triangle
         }
-        List<BaseShape> shapes = new List<BaseShape>();
-        Action actionOnCanvas = Action.circle;
+        List<ColoredShape> shapes = new List<ColoredShape>();
+        Action actionOnCanvas = Action.select;
         CanvasMainController canvasMainController;
         Color currentColor = Color.Blue;
         int currentFormWidth;
@@ -27,7 +27,7 @@ namespace OOP_Graphic_editor
         public Form1()
         {
             InitializeComponent();
-            canvasMainController = new CanvasMainController(canvas);
+            
             setColorButton.BackColor = currentColor;
             currentFormHeight = this.Height;
             currentFormWidth = this.Width;
@@ -84,6 +84,12 @@ namespace OOP_Graphic_editor
                 case Keys.Delete:
                     canvasMainController.RemoveSelectedShape();
                     break;
+                case Keys.G:
+                    canvasMainController.GroupShape();
+                    break;
+                case Keys.S:
+                    canvasMainController.SaveShape();
+                    break;
             }
         }
         private void selectButton_Click(object sender, EventArgs e)
@@ -131,6 +137,11 @@ namespace OOP_Graphic_editor
             {
                 currentFormWidth = Width; currentFormHeight = Height;
             }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            canvasMainController = new CanvasMainController(canvas);
+            canvasMainController.LoadShape();
         }
     }
 }

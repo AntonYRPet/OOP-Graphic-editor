@@ -55,8 +55,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapeFactory\ConcreteShapeFactory.cs" />
+    <Compile Include="ShapeFactory\CShapeFactory.cs" />
     <Compile Include="Shapes\BaseShape.cs" />
     <Compile Include="Shapes\CCircle.cs" />
+    <Compile Include="Shapes\CGroup.cs" />
     <Compile Include="Shapes\CRectangle.cs" />
     <Compile Include="Shapes\CTriangle.cs" />
     <Compile Include="Shapes\ShapeFrameDecorator.cs" />
@@ -85,5 +88,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
