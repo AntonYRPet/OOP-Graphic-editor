@@ -20,3 +20,46 @@ C:\Projects\OOP Graphic editor\bin\Debug\NHibernate.xml
 C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.xml
 C:\Projects\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.xml
 C:\Projects\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CopyComplete
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe.config
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.pdb
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Antlr3.Runtime.dll
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Iesi.Collections.dll
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\NHibernate.dll
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.dll
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.dll
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Antlr3.Runtime.xml
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Iesi.Collections.xml
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\NHibernate.xml
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.xml
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.xml
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.AssemblyReference.cache
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Form1.resources
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Properties.Resources.resources
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.GenerateResource.cache
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CopyComplete
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.exe
+C:\Users\student\Desktop\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.pdb
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe.config
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.exe
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\OOP Graphic editor.pdb
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Antlr3.Runtime.dll
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Iesi.Collections.dll
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\NHibernate.dll
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.dll
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.dll
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Antlr3.Runtime.xml
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Iesi.Collections.xml
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\NHibernate.xml
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.xml
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\bin\Debug\Remotion.Linq.EagerFetching.xml
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.AssemblyReference.cache
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.SuggestedBindingRedirects.cache
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Form1.resources
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP_Graphic_editor.Properties.Resources.resources
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.GenerateResource.cache
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CoreCompileInputs.cache
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.csproj.CopyComplete
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.exe
+C:\Temp\OOP Graphic editor (2)\OOP Graphic editor\obj\Debug\OOP Graphic editor.pdb

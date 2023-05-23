@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace OOP_Graphic_editor.Decorators
 {
-    internal class ShapeFrameDecorator : AbstractShape
+    internal class CShapeFrameDecorator : AbstractShape
     {
         public readonly AbstractShape realObject;
         private const int FRAME_OFFSET = 10;
         private Pen pen = new Pen(Color.Blue, 1);
-        public ShapeFrameDecorator(in AbstractShape realObject)
+        public CShapeFrameDecorator(in AbstractShape realObject)
         {
             this.realObject = realObject;
         }
@@ -50,6 +50,10 @@ namespace OOP_Graphic_editor.Decorators
         {
             get { return realObject.MIN_HEIGHT; }
         }
+        public override Point POS_CENTER => realObject.POS_CENTER;
+
+        public override Size SIZE => realObject.SIZE;
+
         public override bool BelongPoint(in int xChecked, in int yChecked)
         {
             return realObject.BelongPoint(xChecked, yChecked);
@@ -63,18 +67,18 @@ namespace OOP_Graphic_editor.Decorators
         {
             realObject.Move(dX, dY);
         }
-        public override void SetSize(in float newWidth, in float newHeight)
+        public override bool SetSize(in float newWidth, in float newHeight)
         {
-            realObject.SetSize(newWidth, newHeight);
+            return realObject.SetSize(newWidth, newHeight);
         }
         public override bool CheckSize(in int canvasWidth, in int canvasHeight, in uint upOffset, in uint downOffset, in uint leftOffset, in uint rightOffset)
         {
             return realObject.CheckSize(canvasWidth, canvasHeight, upOffset, downOffset, leftOffset, rightOffset);
         }
 
-        public override void Save(in string fileName, bool flag = false)
+        public override void Save(in string fileName)
         {
-            realObject.Save(fileName, flag);
+            realObject.Save(fileName);
         }
 
         //public override void Load(in StreamReader reader,in int beginIndex = 0, CShapeFactory factory = null)
@@ -82,9 +86,19 @@ namespace OOP_Graphic_editor.Decorators
         //    throw new NotImplementedException();
         //}
 
-        public override void Load(ref string fileInfo, CShapeFactory factory = null)
+        public override void Load(in StreamReader reader, in CFactory factory = null)
         {
             throw new NotImplementedException();
+        }
+
+        public override void Init(in int x, in int y, in Color color)
+        {
+            realObject.Init(x, y, color);
+        }
+
+        public override bool CheckMove(in int canvasWidth, in int canvasHeight, in int dX, in int dY)
+        {
+            return realObject.CheckMove(canvasWidth,canvasHeight, dX, dY);
         }
     }
 }

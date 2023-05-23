@@ -2,44 +2,41 @@
 using OOP_Graphic_editor.Shapes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Graphic_editor.Commands
 {
-    class SetColorCommand : Command
+    internal class UnselectAllCommand : Command
     {
-        Color selectColor;
-        List<Color> colors = new List<Color>();
-        public SetColorCommand(Color color)
-        {
-            selectColor = color;
-        }
+        List<CShapeFrameDecorator> decorators = new List<CShapeFrameDecorator>();
         public override bool Execute(in PaintList shapes)
         {
-            this.shapes = shapes; bool result = false;
+            this.shapes = shapes;
+            CShapeFrameDecorator decorator; bool result = false;
             for (int i = 0; i < shapes.Count; ++i)
             {
-                if(shapes[i] is CShapeFrameDecorator)
+                decorator = shapes[i] as CShapeFrameDecorator;
+                if (decorator != null)
                 {
-                    colors.Add(shapes[i].COLOR);
-                    shapes[i].COLOR = selectColor;
                     result = true;
+                    decorators.Add(decorator);
+                    shapes[i] = decorator.realObject;
                 }
             }
             return result;
         }
         public override void Unexecute()
         {
-            int ii = 0;
+            int index;
             for (int i = 0; i < shapes.Count; ++i)
             {
-                if (shapes[i] is CShapeFrameDecorator)
+                index = decorators.FindIndex(item => item.realObject == shapes[i]);
+                if (index != -1)
                 {
-                    shapes[i].COLOR = colors[ii];
-                    ++ii;
+                    shapes[i] = decorators[index];
+                    decorators.RemoveAt(index);
                 }
             }
         }

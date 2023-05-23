@@ -17,24 +17,24 @@ namespace OOP_Graphic_editor.Shapes
         {
 
         }
-        public CCircle() { }
+        public CCircle() { size.Width = 100; size.Height = 100; }
         public override void Draw(in Graphics graphics)
         {
-            graphics.DrawEllipse(pen, x - width / 2, y - height / 2, width, height);
-            graphics.FillEllipse(new SolidBrush(color), x - width / 2, y - height / 2, width, height);
+            graphics.DrawEllipse(pen, posCenter.X - size.Width / 2, posCenter.Y - size.Height / 2, size.Width, size.Height);
+            graphics.FillEllipse(new SolidBrush(color), posCenter.X - size.Width / 2, posCenter.Y - size.Height / 2, size.Width, size.Height);
         }
         public override bool BelongPoint(in int xChecked, in int yChecked)
         {
-            if (Math.Sqrt((xChecked - x) * (xChecked - x) + (yChecked - y) * (yChecked - y)) > (height / 2))
+            if (Math.Sqrt((xChecked - posCenter.X) * (xChecked - posCenter.X) + (yChecked - posCenter.Y) * (yChecked - posCenter.Y)) > (size.Height / 2))
             {
                 return false;
             }
             return true;
         }
-        public override void Save(in string fileName, bool flag = false)
+        public override void Save(in string fileName)
         {
             File.AppendAllText(fileName, "Circle ");
-            base.Save(fileName, flag);
+            base.Save(fileName);
         }
     }
 }

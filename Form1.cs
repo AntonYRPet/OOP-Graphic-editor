@@ -25,13 +25,15 @@ namespace OOP_Graphic_editor
         Color currentColor = Color.Blue;
         int currentFormWidth;
         int currentFormHeight;
-        int currentFormX;
-        int currentFormY;
+        int currentMouseX = 0;
+        int currentMouseY = 0;
+        int moveSpeed = 5;
+        int sizeSpeed = 5;
         bool moveFlag = false;
         public Form1()
         {
             InitializeComponent();
-
+            canvasMainController = new CanvasMainController(canvas);
             setColorButton.BackColor = currentColor;
             currentFormHeight = this.Height;
             currentFormWidth = this.Width;
@@ -45,13 +47,13 @@ namespace OOP_Graphic_editor
                     canvasMainController.SelectShape(e.X, e.Y);
                     break;
                 case Action.circle:
-                    canvasMainController.CreateShape(new CCircle(e.X, e.Y, currentColor));
+                    canvasMainController.CreateShape("Circle", e.X, e.Y);
                     break;
                 case Action.rectangle:
-                    canvasMainController.CreateShape(new CRectangle(e.X, e.Y, currentColor));
+                    canvasMainController.CreateShape("Rectangle", e.X, e.Y);
                     break;
                 case Action.triangle:
-                    canvasMainController.CreateShape(new CTriangle(e.X, e.Y, currentColor));
+                    canvasMainController.CreateShape("Triangle", e.X, e.Y);
                     break;
                 default:
                     break;
@@ -59,23 +61,17 @@ namespace OOP_Graphic_editor
         }
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (moveFlag && canvasMainController.SelectShape(e.X, e.Y))
+            if (moveFlag && canvasMainController.MoveSelectedShape(e.X - currentMouseX, e.Y - currentMouseY))
             {
-                if(e.X>currentFormX)
-                    canvasMainController.MoveSelectedShape("right");
-                if(e.X<currentFormX)
-                    canvasMainController.MoveSelectedShape("left");
-                if(e.Y>currentFormY)
-                    canvasMainController.MoveSelectedShape("down");
-                if(e.Y<currentFormY)
-                    canvasMainController.MoveSelectedShape("up");
+                this.Cursor = Cursors.SizeAll;
             }
-            currentFormX = e.X;
-            currentFormY = e.Y;
+            currentMouseX = e.X;
+            currentMouseY = e.Y;
         }
         private void canvas_MouseUp(object sender, MouseEventArgs e)
         {
             moveFlag = false;
+            this.Cursor = Cursors.Default;
         }
         private void canvas_Paint(object sender, PaintEventArgs e)
         {
@@ -85,26 +81,26 @@ namespace OOP_Graphic_editor
         {
             switch (e.KeyCode)
             {
-                case Keys.Left:
-                    canvasMainController.MoveSelectedShape("left");
+                case Keys.A:
+                    canvasMainController.MoveSelectedShape(-moveSpeed, 0);
                     break;
-                case Keys.Right:
-                    canvasMainController.MoveSelectedShape("right");
+                case Keys.D:
+                    canvasMainController.MoveSelectedShape(moveSpeed, 0);
                     break;
-                case Keys.Up:
-                    canvasMainController.MoveSelectedShape("up");
+                case Keys.W:
+                    canvasMainController.MoveSelectedShape(0, -moveSpeed);
                     break;
-                case Keys.Down:
-                    canvasMainController.MoveSelectedShape("down");
+                case Keys.S:
+                    canvasMainController.MoveSelectedShape(0, moveSpeed);
                     break;
                 case Keys.Oemplus:
-                    canvasMainController.SetSizeSelectedShape("plus");
+                    canvasMainController.SetSizeSelectedShape(sizeSpeed, sizeSpeed);
                     break;
                 case Keys.OemMinus:
-                    canvasMainController.SetSizeSelectedShape("minus");
+                    canvasMainController.SetSizeSelectedShape(-sizeSpeed, -sizeSpeed);
                     break;
                 case Keys.ControlKey:
-                    canvasMainController.resetOnSelection = true;
+                    canvasMainController.resetAfterSelection = true;
                     break;
                 case Keys.Delete:
                     canvasMainController.RemoveSelectedShape();
@@ -112,11 +108,13 @@ namespace OOP_Graphic_editor
                 case Keys.G:
                     canvasMainController.GroupShape();
                     break;
-                case Keys.S:
-                    canvasMainController.SaveShape();
-                    break;
                 case Keys.Z:
                     canvasMainController.CancellationAction();
+                    break;
+                case Keys.L:
+                    if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                        return;
+                    canvasMainController.LoadShape(openFileDialog1.FileName);
                     break;
             }
         }
@@ -141,7 +139,7 @@ namespace OOP_Graphic_editor
             switch (e.KeyCode)
             {
                 case Keys.ControlKey:
-                    canvasMainController.resetOnSelection = false;
+                    canvasMainController.resetAfterSelection = false;
                     break;
             }
         }
@@ -153,7 +151,6 @@ namespace OOP_Graphic_editor
             currentColor = colorDialog1.Color;
             setColorButton.BackColor = currentColor;
         }
-
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             if (canvasMainController.SetCanvasSize(Width - currentFormWidth, Height - currentFormHeight) == false)
@@ -169,11 +166,9 @@ namespace OOP_Graphic_editor
         string SystemFileName = "SystemSize.txt";
         private void Form1_Load(object sender, EventArgs e)
         {
-            canvasMainController = new CanvasMainController(canvas);
             canvasMainController.LoadShape();
             if (File.Exists(SystemFileName))
             {
-
                 using (StreamReader reader = new StreamReader(SystemFileName))
                 {
                     string readBuf = reader.ReadLine();
@@ -182,10 +177,8 @@ namespace OOP_Graphic_editor
                 }
             }
         }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
             canvasMainController.SaveShape();
             File.Create(SystemFileName).Close();
             File.AppendAllText(SystemFileName, this.Width + " " + this.Height);

@@ -1,4 +1,5 @@
-﻿using OOP_Graphic_editor.ShapeFactory;
+﻿using OOP_Graphic_editor.Decorators;
+using OOP_Graphic_editor.ShapeFactory;
 using OOP_Graphic_editor.Shapes;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,25 @@ namespace OOP_Graphic_editor.Commands
 {
     internal class RemoveCommand : Command
     {
-        ConcreteShapeFactory shapes;
-        int index;
-        public RemoveCommand(in ConcreteShapeFactory shapes)
+        private List<AbstractShape>removedShapes = new List<AbstractShape>();
+        public override bool Execute(in PaintList shapes)
         {
             this.shapes = shapes;
-        }
-        public override Command clone()
-        {
-            return new RemoveCommand(shapes);
-        }
-        public override void Execute(in AbstractShape shape)
-        {
-            if(shape != null)
+            for (int i = 0; i < shapes.Count; ++i)
             {
-                AbstractShape tempShape = shape;
-                index = shapes.FindIndex(element => element == tempShape);
-                this.shape = shape;
-                shapes.Remove(shape);
+                if (shapes[i] is CShapeFrameDecorator)
+                {
+                    removedShapes.Add(shapes[i]);
+                    shapes.RemoveAt(i);
+                    --i;
+                }
             }
+            return true;
         }
         public override void Unexecute()
         {
-            shapes.Insert(index, shape);
+            for(int i = 0;i < removedShapes.Count; ++i)
+                shapes.Add(removedShapes[i]);
         }
     }
 }

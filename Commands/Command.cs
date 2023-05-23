@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace OOP_Graphic_editor.Commands
 {
-    internal abstract class Command
+    public abstract class AbstractCommand
     {
-        protected AbstractShape shape;
-        public abstract void Execute(in AbstractShape shape);
+        public abstract bool Execute(in PaintList shapes);
         public abstract void Unexecute();
-        public abstract Command clone();
+    }
+    internal abstract class Command:AbstractCommand
+    {
+        protected PaintList shapes;
+        //public abstract void Execute(in List<AbstractShape> shapes);
+        //public abstract void Unexecute();
     }
 }

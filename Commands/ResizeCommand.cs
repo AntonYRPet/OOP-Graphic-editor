@@ -1,6 +1,8 @@
-﻿using OOP_Graphic_editor.Shapes;
+﻿using OOP_Graphic_editor.Decorators;
+using OOP_Graphic_editor.Shapes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,29 +11,46 @@ namespace OOP_Graphic_editor.Commands
 {
     internal class ResizeCommand : Command
     {
-        private float _dw, _dh;
-        public ResizeCommand(in float dw, in float dh)
+        private int dW, dH, _canvasWidth, _canvasHeight;
+        List<Size> sizeBeforeResize = new List<Size>();
+        public ResizeCommand(in int canvasWidth, in int canvasHeight, in int dW, in int dH)
         {
-            _dw = dw;
-            _dh = dh;
+            this.dW = dW; this.dH = dH; _canvasWidth = canvasWidth; _canvasHeight = canvasHeight;
         }
-        public override Command clone()
+        public override bool Execute(in PaintList shapes)
         {
-            return new ResizeCommand(_dw, _dh);
-        }
-        public override void Execute(in AbstractShape shape)
-        {
-            if (shape != null)
+            this.shapes = shapes; bool result = false;
+            uint dH = (uint)Math.Abs(this.dH), dW = (uint)Math.Abs(this.dW);
+            for (int i = 0; i < shapes.Count; i++)
             {
-                this.shape = shape;
-                this.shape.SetSize(shape.WIDTH + _dw, shape.HEIGHT + _dh);
+                if (shapes[i] is CShapeFrameDecorator)
+                {
+                    sizeBeforeResize.Add(shapes[i].SIZE);
+                    shapes[i].SetSize(shapes[i].WIDTH + this.dW, shapes[i].HEIGHT + this.dH);
+                    if (shapes[i].CheckSize(_canvasWidth, _canvasHeight, 0, 0, 0, 0) == false)
+                    {
+                        shapes[i].SetSize(sizeBeforeResize.Last().Width, sizeBeforeResize.Last().Height);
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+
+                }
             }
+            return result;
         }
         public override void Unexecute()
         {
-            if (shape != null)
+            int ii = 0;
+            for (int i = 0; i < shapes.Count; i++)
             {
-                shape.SetSize(shape.WIDTH - _dw, shape.HEIGHT - _dh);
+                if (shapes[i] is CShapeFrameDecorator)
+                {
+                    if (shapes[i].SIZE != sizeBeforeResize[ii])
+                        shapes[i].SetSize(sizeBeforeResize[ii].Width, sizeBeforeResize[ii].Height);
+                    ++ii;
+                }
             }
         }
     }

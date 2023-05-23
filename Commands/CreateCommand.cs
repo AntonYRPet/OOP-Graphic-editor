@@ -11,28 +11,20 @@ namespace OOP_Graphic_editor.Commands
 {
     internal class CreateCommand : Command
     {
-        ConcreteShapeFactory shapes;
-        public CreateCommand(in ConcreteShapeFactory shapes)
+        AbstractShape shape;
+        public CreateCommand(in AbstractShape shape)
+        {
+            this.shape = shape;
+        }
+        public override bool Execute(in PaintList shapes)
         {
             this.shapes = shapes;
-        }
-        public override Command clone()
-        {
-            return new CreateCommand(shapes);
-        }
-        public override void Execute(in AbstractShape shape)
-        {
-            if (shape != null)
-            {
-                this.shape = shape;
-                shapes.Add(shape);
-            }
+            shapes.Add(shape);
+            return true;
         }
         public override void Unexecute()
         {
             shapes.Remove(shape);
-            if(shapes.Count > 0)
-                shapes[shapes.Count - 1] = new ShapeFrameDecorator(shapes[shapes.Count - 1]);
         }
     }
 }

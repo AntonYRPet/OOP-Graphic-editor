@@ -14,24 +14,24 @@ namespace OOP_Graphic_editor.Shapes
         {
 
         }
-        public CRectangle() { }
+        public CRectangle() { size.Width = 100; size.Height = 100; }
         public override bool BelongPoint(in int xChecked, in int yChecked)
         {
-            if (Math.Abs(xChecked - x) > width / 2)
+            if (Math.Abs(xChecked - posCenter.X) > size.Width / 2)
                 return false;
-            if (Math.Abs(yChecked - y) > height / 2)
+            if (Math.Abs(yChecked - posCenter.Y) > size.Height / 2)
                 return false;
             return true;
         }
         public override void Draw(in Graphics graphics)
         {
-            graphics.DrawRectangle(pen, x - width / 2, y - height / 2, width, height);
-            graphics.FillRectangle(new SolidBrush(color), x - width / 2, y - height / 2, width, height);
+            graphics.DrawRectangle(pen, posCenter.X - size.Width / 2, posCenter.Y - size.Height / 2, size.Width, size.Height);
+            graphics.FillRectangle(new SolidBrush(color), posCenter.X - size.Width / 2, posCenter.Y - size.Height / 2, size.Width, size.Height);
         }
-        public override void Save(in string fileName, bool flag = false)
+        public override void Save(in string fileName)
         {
             File.AppendAllText(fileName, "Rectangle ");
-            base.Save(fileName, flag);
+            base.Save(fileName);
         }
     }
 }
